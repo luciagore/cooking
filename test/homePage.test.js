@@ -5,15 +5,16 @@ chai.use(require('chai-http'));
 chai.use(require('chai-expected-cookie'));
 const request = require('supertest');
 
-const userDetails = {
-    username: 'Amelie',
-		password: 'pass123',
-		firstname: 'Clair',
-		lastname: 'Buggs'
+const userCredentials = {
+  username: 'alice1',
+  password: 'pass',
+  firstname: 'Alice',
+  lastname: 'Briggs'
 }
 
+
 describe('GET /', function() {
-    it('respond with status code 200', function(done) {
+    it('responds with status code 200 and renders "Cookbook"', function(done) {
       request(app)
         .get('/')
         .expect(function(res) {
@@ -27,11 +28,7 @@ describe('GET /', function() {
     it('returns cookie', function(done) {
       request(app)
         .post('/register')
-        .send(userDetails)
-        // .send('username=alice1')
-        // .send('password=passw')
-        // .send('firstname=Alice')
-        // .send('lastname=Briggs')
+        .send(userCredentials)
         .set('Accept', 'application/json')
         .expect(function(res) {
           expect(res).to.containCookie({
@@ -46,6 +43,7 @@ describe('GET /', function() {
     it('returns a cookie', function(done){
       request(app)
       .post('/login')
+      .send(userCredentials)
       .set('Accept', 'application/json')
       .expect(function(res) {
         expect(res).to.containCookie({
@@ -55,3 +53,19 @@ describe('GET /', function() {
       .expect(200, done);
     })
   });
+
+  // describe('GET /recipestore', function(){
+  //   xit('returns a cookie', function(done){})
+    
+  //   });
+
+  // describe('GET /login', function(){
+  //   xit('returns a cookie', function(done){})
+  //   });
+
+  // describe('GET /login', function(){
+  //   xit('returns a cookie', function(done){})
+  //   });
+  
+
+
