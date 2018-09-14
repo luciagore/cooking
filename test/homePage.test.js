@@ -5,6 +5,12 @@ chai.use(require('chai-http'));
 chai.use(require('chai-expected-cookie'));
 const request = require('supertest');
 
+const userDetails = {
+    username: 'Amelie',
+		password: 'pass123',
+		firstname: 'Clair',
+		lastname: 'Buggs'
+}
 
 describe('GET /', function() {
     it('respond with status code 200', function(done) {
@@ -21,10 +27,11 @@ describe('GET /', function() {
     it('returns cookie', function(done) {
       request(app)
         .post('/register')
-        .send('username=alice1')
-        .send('password=passw')
-        .send('firstname=Alice')
-        .send('lastname=Briggs')
+        .send(userDetails)
+        // .send('username=alice1')
+        // .send('password=passw')
+        // .send('firstname=Alice')
+        // .send('lastname=Briggs')
         .set('Accept', 'application/json')
         .expect(function(res) {
           expect(res).to.containCookie({
