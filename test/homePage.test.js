@@ -18,7 +18,7 @@ describe('GET /', function() {
   }); 
 
   describe('POST /register', function() {
-    it('returns user ID', function(done) {
+    it('returns cookie', function(done) {
       request(app)
         .post('/register')
         .send('username=alice1')
@@ -33,4 +33,18 @@ describe('GET /', function() {
         })
         .expect(200, done);
     });
+  });
+
+  describe('POST /login', function(){
+    it('returns a cookie', function(done){
+      request(app)
+      .post('/login')
+      .set('Accept', 'application/json')
+      .expect(function(res) {
+        expect(res).to.containCookie({
+          name: 'cookinguser'
+        })
+      })
+      .expect(200, done);
+    })
   });
