@@ -36,6 +36,14 @@ describe('GET /', function() {
         })
         .expect(200, done);
     });
+    it('redirects to "/"', function(done) {
+      request(app)
+        .post('/register')
+        .send(userCredentials)
+        .set('Accept', 'application/json')
+        .expect('Location', '/')
+        .expect(302, done);
+    });
   });
 
   describe('POST /login', function(){
