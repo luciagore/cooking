@@ -21,6 +21,16 @@ describe('GET /', function() {
         })
         .expect(200, done);
     });
+
+    it('renders welcome message', function(done) {
+      request(app)
+        .get('/')
+        .expect(function(res) {
+          expect(res.text).to.contain('Welcome to Cookbook');
+          expect(res.text).to.not.contain('What ingredient do you have?');
+        })
+        .expect(200, done);
+    });
   }); 
 
   describe('POST /register', function() {
@@ -46,6 +56,17 @@ describe('GET /', function() {
     });
   });
 
+  describe('GET /register', function() {
+    it('shows the form is rendered on the page', function(done) {
+      request(app)
+        .get('/register')
+        .expect(function(res) {
+          expect(res.text).to.contain('Register account');
+        })
+        .expect(200, done);
+    });
+  });
+
   describe('POST /login', function(){
     it('returns a cookie', function(done){
       request(app)
@@ -59,7 +80,18 @@ describe('GET /', function() {
       })
       .expect(200, done);
     })
+
+    it('should return a 302 response and redirect to /login', function(done){
+      request(app)
+      .get('/recipestore')
+      .expect('Location', '/login')
+      .expect(302, done);
+    })
+
   });
+
+
+  
 
   // describe('GET /recipestore', function(){
   //   xit('returns a cookie', function(done){})
