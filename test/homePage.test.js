@@ -70,6 +70,13 @@ describe('GET /', function() {
       })
       .expect(200, done);
     })
+
+    it('should return a 302 response and redirect to /login', function(done){
+      request(app)
+      .get('/recipestore')
+      .expect('Location', '/login')
+      .expect(302, done);
+    })
   });
 
   // describe('GET /recipestore', function(){
