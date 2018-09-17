@@ -46,6 +46,17 @@ describe('GET /', function() {
     });
   });
 
+  describe('GET /register', function() {
+    it('shows the form is rendered on the page', function(done) {
+      request(app)
+        .get('/register')
+        .expect(function(res) {
+          expect(res.text).to.contain('Register account');
+        })
+        .expect(200, done);
+    });
+  });
+
   describe('POST /login', function(){
     it('returns a cookie', function(done){
       request(app)
