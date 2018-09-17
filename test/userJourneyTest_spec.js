@@ -8,12 +8,13 @@ const request = require('supertest');
 
 describe('Recipe Store page', function() {
     
-    before('Navigate to home page', function() {
-        browser.url('http://localhost:3000/');
-    });
+    // before('Navigate to recipe store page', function() {
+    //     browser.url('http://localhost:3000/recipestore');
+    // });
  
     it('should render "Add Recipe" button', () => {
-        expect(browser.element()).to.equal('#btnAddRecipe');
+        browser.url('http://localhost:3000/recipestore');
+        expect(browser.isVisible('#btnAddRecipe')).to.be.true;
     })
 
 
