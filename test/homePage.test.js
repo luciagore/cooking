@@ -1,7 +1,6 @@
 const app = require('../app.js');
 const chai = require('chai');
 const expect = chai.expect;
-chai.use(require('chai-http'));
 chai.use(require('chai-expected-cookie'));
 const request = require('supertest');
 
