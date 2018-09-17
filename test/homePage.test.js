@@ -21,6 +21,16 @@ describe('GET /', function() {
         })
         .expect(200, done);
     });
+
+    it('renders welcome message', function(done) {
+      request(app)
+        .get('/')
+        .expect(function(res) {
+          expect(res.text).to.contain('Welcome to Cookbook');
+          expect(res.text).to.not.contain('What ingredient do you have?');
+        })
+        .expect(200, done);
+    });
   }); 
 
   describe('POST /register', function() {
@@ -77,7 +87,11 @@ describe('GET /', function() {
       .expect('Location', '/login')
       .expect(302, done);
     })
+
   });
+
+
+  
 
   // describe('GET /recipestore', function(){
   //   xit('returns a cookie', function(done){})
