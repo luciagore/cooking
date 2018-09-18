@@ -40,13 +40,24 @@ describe('Recipe Store page', function() {
         expect(browser.isVisible('#btnAddRecipe')).to.be.true;
     })
 
+    it('should not populate table with added recipe', () => {
+        browser.setValue('#inputRecipeName', 'pancakes');
+        browser.setValue('#inputCookingTime', '30');
+        browser.setValue('#inputIngredients', 'eggs, flour');
+        browser.setValue('#inputMethod', 'whisk, flip');
+        browser.click('#btnAddRecipe');
+        expect(browser.isExisting('a.linkshowrecipedetails=pancakes')).to.be.false;
+    }) 
+
     it('should populate table with added recipe', () => {
         browser.setValue('#inputRecipeName', 'pancakes');
         browser.setValue('#inputCookingTime', '30');
         browser.setValue('#inputIngredients', 'eggs, flour');
         browser.setValue('#inputMethod', 'whisk, flip');
         browser.click('#btnAddRecipe');
-
-        expect(browser.isExisting('a.linkshowrecipedetails=pancakes')).to.be.true;
+        browser.reload();
+        var text = browser.getText('=pancakes');
+        console.log('text output', text);
+        expect(browser.isExisting(text)).to.be.true;
     }) 
 })
