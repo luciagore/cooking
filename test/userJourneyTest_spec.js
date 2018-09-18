@@ -40,5 +40,13 @@ describe('Recipe Store page', function() {
         expect(browser.isVisible('#btnAddRecipe')).to.be.true;
     })
 
+    it('should populate table with added recipe', () => {
+        browser.setValue('#inputRecipeName', 'pancakes');
+        browser.setValue('#inputCookingTime', '30');
+        browser.setValue('#inputIngredients', 'eggs, flour');
+        browser.setValue('#inputMethod', 'whisk, flip');
+        browser.click('#btnAddRecipe');
 
+        expect(browser.isExisting('a.linkshowrecipedetails=pancakes')).to.be.true;
+    }) 
 })
