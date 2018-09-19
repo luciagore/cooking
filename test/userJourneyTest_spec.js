@@ -33,6 +33,12 @@ describe('Home page', function(){
 
 describe('Recipe Store page', function() {
     beforeEach(function(){
+        browser.url('/register');
+        browser.setValue('#inputUsername', 'lucy');
+        browser.setValue('#inputFirstname', 'lucy');
+        browser.setValue('#inputLastname', 'Gore');
+        browser.setValue('#inputPassword', 'hello');
+        browser.click('#btnRegister')
         browser.url('/recipestore');
     })
 
@@ -40,24 +46,25 @@ describe('Recipe Store page', function() {
         expect(browser.isVisible('#btnAddRecipe')).to.be.true;
     })
 
-    it('should not populate table with added recipe', () => {
+    it('should populate table with added recipe - check link exists', () => {
         browser.setValue('#inputRecipeName', 'pancakes');
         browser.setValue('#inputCookingTime', '30');
         browser.setValue('#inputIngredients', 'eggs, flour');
         browser.setValue('#inputMethod', 'whisk, flip');
         browser.click('#btnAddRecipe');
-        expect(browser.isExisting('a.linkshowrecipedetails=pancakes')).to.be.false;
+        browser.refresh();
+        expect(browser.isExisting('a.linkshowrecipedetails=pancakes')).to.be.true;
     }) 
 
-    it('should populate table with added recipe', () => {
+    it('should populate table with added recipe - check table element', () => {
         browser.setValue('#inputRecipeName', 'pancakes');
         browser.setValue('#inputCookingTime', '30');
         browser.setValue('#inputIngredients', 'eggs, flour');
         browser.setValue('#inputMethod', 'whisk, flip');
         browser.click('#btnAddRecipe');
-        browser.reload();
-        var text = browser.getText('=pancakes');
-        console.log('text output', text);
-        expect(browser.isExisting(text)).to.be.true;
+        browser.refresh();
+        var rows = $$('.list-group tr')
+        var columns = rows[1].$$('td')
+        expect(columns[0].getText()).to.equal('pancakes');
     }) 
 })
