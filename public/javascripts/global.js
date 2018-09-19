@@ -54,7 +54,7 @@ function showRecipeDetails(event) {
     $('#recipeInfoName').text(thisRecipeObject.recipeName);
     $('#recipeInfoCookingTime').text(thisRecipeObject.cookingTime);
     $('#recipeInfoIngredients').text(thisRecipeObject.ingredients);
-    $('#recipeInfoSomething').text(thisRecipeObject.something);
+    $('#recipeInfoMethod').text(thisRecipeObject.method);
 
     $('#recipeDetails').removeClass('hidden');
     $('#recipeDetails').addClass('active');
@@ -68,7 +68,7 @@ function searchHttp(event) {
     $.getJSON( '/documents/documentlist/' + query, function( data ) {
         $.each(data, function() {
             tableContent += '<tr>';
-            tableContent += '<td><a href="' + this.recipeName + '" class="linkshowrecipedetails" rel="something">' + this.recipeName + '</a></td>';
+            tableContent += '<td><a href="' + this.recipeName + '" class="linkshowrecipedetails" rel="a">' + this.recipeName + '</a></td>';
             tableContent += '</tr>';
         });
         $('.searchList table tbody').html(tableContent);
@@ -98,7 +98,8 @@ function addRecipe(event) {
             'recipeName': $('#addRecipe fieldset input#inputRecipeName').val(),
             'cookingTime': $('#addRecipe fieldset input#inputCookingTime').val(),
             'ingredients': $('#addRecipe fieldset input#inputIngredients').val(),
-            'something': $('#addRecipe fieldset input#inputSomeOtherShit').val(),
+            'method': $('#addRecipe fieldset input#inputMethod').val(),
+            'userID': userID.valueOf()
         }
 
         $.ajax({
@@ -126,7 +127,7 @@ function addRecipe(event) {
 function deleteRecipe(event) {
     event.preventDefault();
 
-    var confirmation = confirm('Are you sure you want to delete this user?');
+    var confirmation = confirm('Are you sure you want to delete this recipe?');
 
     if (confirmation === true) {
 

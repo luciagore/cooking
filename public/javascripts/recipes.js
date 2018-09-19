@@ -55,7 +55,7 @@ function addRecipe(event) {
 function deleteRecipe(event) {
     event.preventDefault();
 
-    var confirmation = confirm('Are you sure you want to delete this user?');
+    var confirmation = confirm('Are you sure you want to delete this recipe?');
 
     if (confirmation === true) {
         $.ajax({
