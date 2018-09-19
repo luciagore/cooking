@@ -38,5 +38,11 @@ exports.config = {
     mochaOpts: {
         ui: 'bdd'
     },
+
+    framework: 'cucumber',
+
+   cucumberOpts: {
+       ui: 'bdd'
+   },
    
 }
