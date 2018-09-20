@@ -1,16 +1,19 @@
 const { Given, When, Then } = require('cucumber');
+var expect = require('chai').expect
 
-         Given('I am a registered user', function () {
-           // Write code here that turns the phrase above into concrete actions
-           return 'pending';
+         Given('I am a new user', function () {
+           browser.url('/register')
          });
 
-         When('I submit correct login details', function () {
-           // Write code here that turns the phrase above into concrete actions
-           return 'pending';
+         When('I submit registration details', function () {
+          browser.setValue('#inputUsername', 'lucy');
+          browser.setValue('#inputFirstname', 'lucy');
+          browser.setValue('#inputLastname', 'Gore');
+          browser.setValue('#inputPassword', 'hello');
+          browser.click('#btnRegister')
          });
 
-         Then('I am logged In', function () {
-           // Write code here that turns the phrase above into concrete actions
-           return 'pending';
+         Then('I am registered and logged in', function () {
+          var account = browser.getText('=My Account: lucy')
+          expect(browser.isVisible(account)).to.be.true;
          });

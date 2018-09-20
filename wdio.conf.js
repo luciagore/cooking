@@ -1,7 +1,7 @@
 exports.config = {
   
     specs: [
-        './test/**/*.js'
+        './features/**/*.feature'
     ],
     exclude: [
     ],
@@ -32,17 +32,14 @@ exports.config = {
     
     connectionRetryCount: 3,
     services: ['selenium-standalone'],
-   
-    framework: 'mocha',
-  
-    mochaOpts: {
-        ui: 'bdd'
-    },
 
     framework: 'cucumber',
 
-   cucumberOpts: {
-       ui: 'bdd'
-   },
+    cucumberOpts: {
+       ui: 'bdd',
+       require: [
+           './features/step_definitions/*.js'
+       ]
+    }
    
 }
