@@ -4,6 +4,7 @@
   "private": true,
   "scripts": {
     "start": "nodemon ./bin/www",
+    "test:unit": "jest",
     "test": "mocha --recursive",
     "test:ui": "wdio wdio.conf.js"
   },
@@ -35,6 +36,7 @@
   },
   "devDependencies": {
     "chromedriver": "^2.36.0",
+    "jest": "^23.6.0",
     "nodemon": "^1.18.4",
     "wdio-chromedriver-service": "^0.1.2",
     "wdio-cucumber-framework": "^2.2.7",
