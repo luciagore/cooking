@@ -14,6 +14,6 @@ var expect = require('chai').expect
          });
 
          Then('I am registered and logged in', function () {
-          var account = browser.getText('=My Account: lucy')
-          expect(browser.isVisible(account)).to.be.true;
+          var account = browser.getText('*=My Account: lucy')
+          expect(browser.isExisting(account)).to.be.true;
          });
