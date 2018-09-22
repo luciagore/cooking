@@ -8,7 +8,7 @@ describe('getting documents', () => {
         "ingredients": "eggs milk",
         "method": "bake" 
         }
-    test('returns a document', (done) => {
+    test('returns a document by', (done) => {
         //setup
         const mockCollection = {
             find: function (userID, something, next) {
@@ -22,7 +22,7 @@ describe('getting documents', () => {
             }
         }
         // execution of our method
-        actions.getDocumentByContent(mockCollection, 'one', 'eggs', (recipes) => {
+        actions.getRecipeByIngredients(mockCollection, 'one', 'eggs', (recipes) => {
             // actual test
             expect(recipes).toEqual([recipe])
             done();
@@ -62,7 +62,7 @@ describe('getting documents', () => {
             }
         }
         // exercise getDocuments method
-        actions.getDocuments(mockedCollection, 'two', (docs) => {
+        actions.getRecipes(mockedCollection, 'two', (docs) => {
             // actual test
             expect(docs).toEqual(docs)
             done();
