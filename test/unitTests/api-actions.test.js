@@ -1,14 +1,14 @@
 const actions = require('../../lib/api-actions');
 
 
-describe('getting documents', () => {
+describe('getting recipes', () => {
     var recipe = { 
         "recipeName": "pancakes",
         "cookingTime": "10",
         "ingredients": "eggs milk",
         "method": "bake" 
         }
-    test('returns a document by', (done) => {
+    test('returns a recipe by ingredients', (done) => {
         //setup
         const mockCollection = {
             find: function (userID, something, next) {
@@ -22,7 +22,7 @@ describe('getting documents', () => {
             }
         }
         // execution of our method
-        actions.getRecipeByIngredients(mockCollection, 'one', 'eggs', (recipes) => {
+        actions.getRecipeByIngredients(mockCollection, 'one', 'eggs milk', (recipes) => {
             // actual test
             expect(recipes).toEqual([recipe])
             done();
@@ -61,7 +61,7 @@ describe('getting documents', () => {
                 next(mockedResponse)
             }
         }
-        // exercise getDocuments method
+        // exercise getRecipes method
         actions.getRecipes(mockedCollection, 'two', (docs) => {
             // actual test
             expect(docs).toEqual(recipes)
