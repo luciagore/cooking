@@ -29,9 +29,9 @@ describe('getting documents', () => {
         });
     });
     
-    test('returns a collection of documents', (done) => {
+    test('returns a collection of recipes', (done) => {
         // setup
-        let docs = [{
+        let recipes = [{
             "cookingTime": "10",
             "ingredients": "eggs milk",
             "method": "bake",
@@ -64,7 +64,7 @@ describe('getting documents', () => {
         // exercise getDocuments method
         actions.getRecipes(mockedCollection, 'two', (docs) => {
             // actual test
-            expect(docs).toEqual(docs)
+            expect(docs).toEqual(recipes)
             done();
         })
     })
