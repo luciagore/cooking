@@ -1,4 +1,5 @@
 function populateTable () {
+    console.log('In file populateTable.js')
     var tableContent = '';
 
     $.getJSON( '/documents/documentlist/', function( data ) {

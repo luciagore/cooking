@@ -21,7 +21,7 @@ function addShownClass() {
 };
 
 function populateTable() {
-
+    console.log('in Populaaaate Table');
     var tableContent = '';
 
     $.getJSON( '/documents/documentlist', function( data ) {
