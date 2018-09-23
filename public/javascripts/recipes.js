@@ -8,6 +8,7 @@ function getCookie(name, next) {
 
 function addRecipe(event) {
     event.preventDefault();
+    alert('Are you sure you want to add this recipe?');
 
     var errorCount = 0;
     $('#addRecipe input').each(function(index, val) {
@@ -36,9 +37,11 @@ function addRecipe(event) {
             url: '/documents/adddocument',
             dataType: 'JSON'
         }).done(function( response ) {
-
+            console.log('this is our response: ', response)
             if (response.msg === '') {
+                alert(' after Ajax POST')
                 $('#addRecipe fieldset input').val('');
+                alert('berfore populate table')
                 populateTable();
             }
             else {
