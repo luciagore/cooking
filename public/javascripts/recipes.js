@@ -23,7 +23,7 @@ function addRecipe(event) {
             userID = decodeURIComponent(cookieId);
         });
 
-        var newUser = {
+        var newRecipe = {
             'recipeName': $('#inputRecipeName').val(),
             'cookingTime': $('#inputCookingTime').val(),
             'ingredients': $('#inputIngredients').val(),
@@ -33,20 +33,18 @@ function addRecipe(event) {
 
         $.ajax({
             type: 'POST',
-            data: newUser,
+            data: newRecipe,
             url: '/documents/adddocument',
-            dataType: 'JSON'
+            // dataType: 'JSON'
         }).done(function( response ) {
             console.log('this is our response: ', response)
             if (response.msg === '') {
-                alert(' after Ajax POST')
                 $('#addRecipe fieldset input').val('');
-                alert('berfore populate table')
-                populateTable();
             }
             else {
-               alert('Error: ' + response.msg);
+                alert('Error: ' + response.msg);
             }
+            populateTable();
         });
     }
     else {
