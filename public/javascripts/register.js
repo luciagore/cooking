@@ -19,7 +19,7 @@ function registerUser(event) {
             type: 'POST',
             data: userDetails,
             url: '/register',
-            dataType: 'JSON'
+            // dataType: 'JSON'
         }).done();
     }
     else {
@@ -47,7 +47,7 @@ function login(event) {
             type: 'POST',
             data: userDetails,
             url: '/login',
-            dataType: 'JSON'
+            // dataType: 'JSON'
         }).done();
     }
     else {
