@@ -4,7 +4,6 @@
   "private": true,
   "scripts": {
     "start": "nodemon ./bin/www",
-    "debug": "nodemon --inspect ./bin/www",
     "test:unit": "jest",
     "test": "mocha --recursive",
     "test:ui": "wdio wdio.conf.js"
