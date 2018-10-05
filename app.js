@@ -8,7 +8,14 @@ var bodyParser = require('body-parser');
 var mongo = require('mongodb');
 
 var monk = require('monk');
-var db = monk('localhost:27017/cookingDB');
+// var db = monk('localhost:27017/cookingDB');
+
+var db = monk('localhost:27017/cookingDB', function(err, db){
+  console.log('about to connect to DB');
+  if(err){
+     console.error("Db is not connected", err.message);
+  }
+});
 
 var routes = require('./lib/routes/index');
 var documents = require('./lib/routes/documents');
