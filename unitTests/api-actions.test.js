@@ -1,4 +1,4 @@
-const actions = require('../../lib/api-actions');
+const actions = require('../lib/api-actions');
 
 var recipe = { "recipeName" : "pancakes", "cookingTime" : "10", "ingredients" : "eggs milk", "method" : "bake" }
 
