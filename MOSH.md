@@ -20,7 +20,7 @@ Install Mosh on your server
     
     2.1. First ssh into your remote server as usual and then install mosh
     ```
-    ssh -i "yourserver.pem" ubuntu@ecx-xx-xxx-xxx-xx.eu-west-1.compute.amazonaws.com
+    ssh -i "your-server-name.pem" ubuntu@ecx-xx-xxx-xxx-xx.eu-west-1.compute.amazonaws.com
     sudo apt-get install mosh
     ```
 
@@ -40,16 +40,20 @@ Mosh into your instance using an AWS Pem file.
 
 Good thing is to organize your private keys in one place only. For example a convention is to keep them in ~/.ssh directory.
 ```
-cp *.pem ~/.ssh/
+sudo cp *.pem ~/.ssh/
+```
+or if you are sure of your destination dir
+```
+sudo mv *.pem ~/.ssh/
 ```
 
-Example of SSH connection from the same directory where your PEM file is located.
+Example of SSH connection from any directory.
 ```
-ssh -i "CookingApp2.pem" ubuntu@ec2-52-211-204-69.eu-west-1.compute.amazonaws.com
+ssh -i ~/.ssh/CookingApp2.pem ubuntu@ec2-52-211-204-69.eu-west-1.compute.amazonaws.com
 ```
 
 Example of Mosh connection from any directory.
 ```
 mosh --ssh="ssh -i ~/.ssh/CookingApp2.pem" ubuntu@ec2-52-211-204-69.eu-west-1.compute.amazonaws.com
 ```
-### Happy moshing! ;-)
+### Happy Moshing! ;-)
