@@ -11,4 +11,3 @@ simple run
 
 and go to localhost:3000
 
-test
