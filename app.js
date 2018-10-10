@@ -12,8 +12,8 @@ var monk = require('monk');
 
 var db = monk('localhost:27017/cookingDB', function(err, db){
   console.log('about to connect to DB');
-  if(err){
-     console.error("Db is not connected", err.message);
+  if (err){
+    console.error('Db is not connected', err.message);
   }
 });
 
@@ -23,8 +23,8 @@ var documents = require('./lib/routes/documents');
 var app = express();
 
 app.use(function(req, res, next){
-    req.db = db;
-    next();
+  req.db = db;
+  next();
 });
 
 app.set('views', path.join(__dirname, 'public/views'));
@@ -50,7 +50,7 @@ if (app.get('env') === 'development') {
     res.status(err.status || 500);
     res.render('error', {
       message: err.message,
-      error: err
+      error: err,
     });
   });
 }
@@ -59,7 +59,7 @@ app.use(function(err, req, res, next) {
   res.status(err.status || 500);
   res.render('error', {
     message: err.message,
-    error: {}
+    error: {},
   });
 });
 

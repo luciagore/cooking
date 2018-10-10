@@ -32,6 +32,7 @@
     "monk": "^3.1.2",
     "morgan": "^1.9.1",
     "nock": "^9.6.1",
+    "prettier": "^1.14.3",
     "request": "^2.79.0",
     "serve-favicon": "^2.5.0",
     "supertest": "3.3.0"
