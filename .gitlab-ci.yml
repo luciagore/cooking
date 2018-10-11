@@ -1,12 +1,18 @@
 
 image: node:8.12.0
 
+cache:
+  paths:
+    - node_modules/
+    - .npm
+
 stages:
- - build
- - test
+  - build
+  - test
 
 build:
  stage: build
+ script:
   - sudo apt-get update -y
   - sudo apt-get install -y git
   - sudo apt-get install -y curl
@@ -24,7 +30,7 @@ build:
 test_unit:
   stage: test
   services:
-    - mongo: 3.1.6
+    - mongo:3.1.6
   script:
   - npm i npm@latest -g
   - npm i
@@ -33,7 +39,7 @@ test_unit:
 test_ui:
   stage: test
   services:
-    - mongo: 3.1.6
+    - mongo:3.1.6
   script:
   - npm i npm@latest -g
   - npm i
