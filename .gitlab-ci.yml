@@ -40,6 +40,7 @@ test_unit:
   script:
   - npm i npm@latest -g
   - npm i
+  - DATABASE_URL=mongodb://ec2-34-255-190-53.eu-west-1.compute.amazonaws.com:27017/cookingDB
   - npm run test:unit
 
 test_feature:
@@ -52,6 +53,7 @@ test_feature:
   script:
   - npm i npm@latest -g
   - npm i
+  - DATABASE_URL=mongodb://ec2-34-255-190-53.eu-west-1.compute.amazonaws.com:27017/cookingDB
   - npm run test
 
 test_ui:
@@ -64,6 +66,7 @@ test_ui:
   script:
   - npm i npm@latest -g
   - npm i
+  - DATABASE_URL=mongodb://ec2-34-255-190-53.eu-west-1.compute.amazonaws.com:27017/cookingDB
   - npm run test:ui
 
 
