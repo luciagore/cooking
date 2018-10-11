@@ -10,6 +10,3 @@ simple run
 ` npm start `
 
 and go to localhost:3000
-
-
-test
