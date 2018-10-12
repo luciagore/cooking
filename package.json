@@ -3,7 +3,6 @@
   "version": "0.0.1",
   "private": true,
   "scripts": {
-    "pretest": "eslint --ignore-path .gitignore .",
     "start": "nohup nodemon -I ./bin/www &",
     "test:unit": "jest",
     "test": "mocha --recursive",
