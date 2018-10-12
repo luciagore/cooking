@@ -1,0 +1,8 @@
+[all:vars]
+ansible_python_interpreter=/usr/bin/python3
+
+[dev]
+ec2-52-211-204-69.eu-west-1.compute.amazonaws.com ansible_user=ubuntu
+
+[prod]
+ec2-34-241-127-122.eu-west-1.compute.amazonaws.com ansible_user=yulianedyalkova
