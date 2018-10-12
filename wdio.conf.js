@@ -1,5 +1,4 @@
 exports.config = {
-
   specs: [
     './features/**/*.feature',
   ],
@@ -21,6 +20,19 @@ exports.config = {
 
   bail: 0,
 
+  capabilities: [{
+    browserName: 'chrome',
+    chromeOptions: {
+        args: [
+            'headless',
+            'disable-gpu',
+            'no-sandbox',
+            '--window-size=1280,800'
+        ]
+    }
+  }],
+  
+  host: process.env.GRID_IP || '127.0.0.1',
   // Saves a screenshot to a given path if a command fails.
   screenshotPath: '(./errorShots/)',
 
